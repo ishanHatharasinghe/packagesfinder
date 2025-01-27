@@ -189,21 +189,21 @@ const PackageFinder = () => {
         <div className="flex gap-4">
           <button
             onClick={() => handleTabChange("prepaid")}
-            className={`px-4 font-bold py-2 rounded-lg transition ${
+            className={`px-4 py-2 rounded-lg transition ${
               activeTab === "prepaid"
                 ? "bg-[#4fb846] text-white shadow-lg"
                 : "bg-gray-700 text-gray-300"
-            } `}
+            } hover:bg-blue-600`}
           >
             Prepaid
           </button>
           <button
             onClick={() => handleTabChange("postpaid")}
-            className={`px-4 py-2 font-bold rounded-lg transition ${
+            className={`px-4 py-2 rounded-lg transition ${
               activeTab === "postpaid"
                 ? "bg-[#4fb846] text-white shadow-lg"
                 : "bg-gray-700 text-gray-300"
-            } `}
+            } hover:bg-blue-600`}
           >
             Postpaid
           </button>
@@ -376,7 +376,7 @@ const PackageFinder = () => {
 
       <button
         onClick={applyFilters}
-        className="mt-6 w-full py-3 bg-[#005CB2FF] text-white rounded-lg shadow-lg hover:shadow-xl transition-all mb-4 duration-300 ease-in-out transform hover:scale-105 flex items-center justify-center "
+        className="mt-6 w-full py-3 bg-[#0055a3] text-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 ease-in-out transform hover:scale-105 flex items-center justify-center"
       >
         <span className="font-semibold text-lg">Find My Package</span>
         <svg
@@ -401,42 +401,38 @@ const PackageFinder = () => {
           filteredData.map((item, index) => (
             <div
               key={index}
-              className="bg-gradient-to-br from-[#1A2238] to-[#0B132B]  rounded-2xl shadow-lg hover:shadow-2xl transition-transform transform hover:scale-105"
+              className="bg-[#001325FF] p-4 rounded-lg shadow-xl hover:shadow-2xl transition-all transform hover:scale-102"
             >
-              <div className="bg-gray-700 p-3 rounded-t-xl">
-                <h2 className="text-xl font-bold text-white mb-1">
-                  {item["Package Name"]}
-                </h2>
-              </div>
-              <div className="p-4">
-                <p className="text-base text-[#48B6F1] font-bold mb-2">
-                  Price: Rs.{" "}
-                  <span className="font-semibold">{item["Price (Rs:)"]}</span>
-                </p>
-                <p className="text-sm text-gray-400 mb-2">
-                  Validity:{" "}
-                  <span className="font-semibold">
-                    {item["Validity days"]} days
-                  </span>
-                </p>
-                <p className="text-sm text-gray-400 mb-2">
-                  Voice: <span className="font-semibold">{item["Voice"]}</span>
-                </p>
-                <p className="text-sm text-gray-400">
-                  Preferred Platforms:{" "}
-                  <span className="font-semibold">
-                    {platforms[activeTab]
-                      .filter(
-                        (platform) => item[platform]?.toLowerCase() === "yes"
-                      )
-                      .join(", ") || "None"}
-                  </span>
-                </p>
-              </div>
+              <h2 className="text-2xl font-semibold text-white mb-3 hover:text-blue-500 transition-colors">
+                {item["Package Name"]}
+              </h2>
+              <p className="text-lg text-[#006CD2FF] font-bold mb-2">
+                Price: Rs.{" "}
+                <span className="font-semibold">{item["Price (Rs:)"]}</span>
+              </p>
+              <p className="text-gray-300 mb-2">
+                Validity:{" "}
+                <span className="font-semibold">
+                  {item["Validity days"]} days
+                </span>
+              </p>
+              <p className="text-gray-300 mb-2">
+                Voice: <span className="font-semibold">{item["Voice"]}</span>
+              </p>
+              <p className="text-gray-300 mb-4">
+                Preferred Platforms:{" "}
+                <span className="font-semibold">
+                  {platforms[activeTab]
+                    .filter(
+                      (platform) => item[platform]?.toLowerCase() === "yes"
+                    )
+                    .join(", ") || "None"}
+                </span>
+              </p>
             </div>
           ))
         ) : (
-          <div className="col-span-1 md:col-span-2 lg:col-span-3 px-6 py-6 text-center text-gray-500 bg-[#1A2238] rounded-xl">
+          <div className="col-span-1 md:col-span-2 lg:col-span-3 px-4 py-4 text-center text-gray-400">
             No packages found
           </div>
         )}
