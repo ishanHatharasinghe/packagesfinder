@@ -44,7 +44,6 @@ const PackageFinder = () => {
       "WhatsApp",
       "YouTube",
       "Instagram",
-      "Messenger",
       "Tiktok",
       "SnapChat",
       "Google Maps",
